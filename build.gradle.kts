@@ -21,7 +21,8 @@ dependencies {
     testImplementation("org.junit.platform:junit-platform-suite:1.8.1")
 }
 
-tasks.create<JavaExec>("cucumber") {
+tasks.create<JavaExec>("cucumber",) {
+    description = "Runs the Cucumber test scenario's"
     dependsOn("assemble", "testClasses")
 
     mainClass.set("io.cucumber.core.cli.Main")
@@ -35,12 +36,14 @@ tasks.create<JavaExec>("cucumber") {
 }
 
 tasks.create<JavaExec>("cucumber-help") {
+    description = "Show the Cucumber command line help"
     mainClass.set("io.cucumber.core.cli.Main")
     classpath(configurations["cucumberRuntime"])
     args("--help")
 }
 
 tasks.create<JavaExec>("cucumber-version") {
+    description = "Show the version of Cucumber used int the project"
     mainClass.set("io.cucumber.core.cli.Main")
     classpath(configurations["cucumberRuntime"])
     args("--version")
